@@ -17,7 +17,7 @@ public class BrowserUtils {
     /**
      * takes screenshot
      */
-    public static void takeScreenshot(Scenario scenario){
+    public static void takeScreenshot(){
         try{
             myScenario.log("Current url is: " + Driver.getDriver().getCurrentUrl());
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
