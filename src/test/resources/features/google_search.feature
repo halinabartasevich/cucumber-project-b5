@@ -21,3 +21,5 @@ Feature: Google Search Functionality Title Validation
     Given user is on Google page
     When user types "Nadir Shafiyev" in the google search box and clicks enter
     Then user should be able to see "Nadir Shafiyev - Google Search" in the google title
+
+
