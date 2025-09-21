@@ -78,7 +78,7 @@ public class BrowserUtils {
      * @author Polina
      */
 
-    public static void loopLonkClickMethod(String nameOfPage) {
+    public static void loopLinkClickMethod(String nameOfPage) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//a[.='" + nameOfPage + "']"));
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();

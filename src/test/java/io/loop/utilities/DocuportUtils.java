@@ -11,7 +11,6 @@ public class DocuportUtils {
      * logins to docuport app
      * @param driver, which is initialized in the test base
      * @param role, comes from docuport constants
-     * author PolinaRostkova
      */
     public static void login(WebDriver driver, String role) throws InterruptedException {
         driver.get(ConfigurationReader.getProperty("docuportBETA"));
@@ -65,8 +64,8 @@ public class DocuportUtils {
      * @param driver
      * @param emailAdress
      * @param field
-     * @return
-     * @author Polina
+     * @return ()
+     * @return (yield is only like return inside switch )
      */
 
     public static String returnAnyFieldFromTable(WebDriver driver, String emailAdress, String field) {

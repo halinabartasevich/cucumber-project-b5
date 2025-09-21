@@ -25,7 +25,7 @@ public class Driver {
 
     /**
      * Singleton Patter
-     * @return
+     * @return driver
      */
 
     public static WebDriver getDriver() {
@@ -49,7 +49,7 @@ public class Driver {
 
     /**
      * Closing the driver
-     * @author Polina
+     * @author Halina
      */
 
     public static void closeDriver() {

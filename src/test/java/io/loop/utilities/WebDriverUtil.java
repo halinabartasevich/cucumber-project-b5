@@ -15,7 +15,6 @@ public class WebDriverUtil {
     /**
      * @param browserType
      * @return the driver of that browser
-     * @author Polina
      */
     public static WebDriver getDriver(String browserType){
         if (browserType.equalsIgnoreCase("Chrome")){
