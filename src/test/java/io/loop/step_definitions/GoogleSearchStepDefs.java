@@ -23,8 +23,8 @@ public class GoogleSearchStepDefs {
 
     GoogleSearchPage googleSearchPage = new GoogleSearchPage();
 
-    @Given("user is on Google page")
-    public void user_is_on_Google_page() {
+    @Given("user is on Home page page")
+    public void user_is_on_home_page_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("google.url"));
     }
 
