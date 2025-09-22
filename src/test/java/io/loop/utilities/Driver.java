@@ -18,44 +18,58 @@ public class Driver {
     // making our driver instance private, so it is not reachable outside the class
     // we make it static because we want it to run before everything else, and we will use it in static method
 
-    private static WebDriver driver;
+    // private static WebDriver driver;
+    // implement threadLocal to achieve multi thread locally
+    private static InheritableThreadLocal <WebDriver> driverPool = new InheritableThreadLocal<>();
 
-
-    // creating a reusable method that will run the same driver instance every time we call it
-
-    /**
-     * Singleton Patter
-     * @return driver
+    /*
+    Creating a reusable method that will return the same driver instance every time when we call it
      */
 
+    /**
+     * Singleton pattern
+     * @return
+     */
     public static WebDriver getDriver() {
-        if (driver == null) {
-            String browserType = ConfigurationReader.getProperty("browser");
+        if (driverPool.get() == null) {
+            String browserType = ConfigurationReader.getProperties("browser");
             ChromeOptions options = new ChromeOptions();
             switch (browserType.toLowerCase()) {
                 case "chrome" -> {
                     options.addArguments("--disable-blink-features=AutomationControlled");
-                    driver = new ChromeDriver(options);
-                }
-                case "firefox" -> driver = new FirefoxDriver();
-                case "safari" -> driver = new SafariDriver();
-            }
+                   /*
+                   options.addArguments("--disable-blink-features=AutomationControlled");
+                    options.addArguments("--disable-password-manager-reauthentication");
+                    options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding");
+                    options.setExperimentalOption("prefs", new java.util.HashMap<String, Object>() {{
+                        put("credentials_enable_service", false);
+                        put("profile.password_manager_enabled", false);
+                        put("profile.password_manager_leak_detection", false);
+                        put("autofill.profile_enabled", false);
+                        put("autofill.credit_card_enabled", false);
+                    }});
+                    */
 
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+                    driverPool.set(new ChromeDriver(options));
+                }
+                case "firefox" -> driverPool.set(new FirefoxDriver());
+                case "safari" -> driverPool.set(new SafariDriver());
+            }
+            driverPool.get().manage().window().maximize();
+            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
-        return driver;
+        return driverPool.get();
     }
 
     /**
      * Closing the driver
-     * @author Halina
+     * @author nsh
      */
-
     public static void closeDriver() {
-        if (driver != null) {
-            driver.close();
-            driver = null; // we assign it back to null so that next time we can use it an assign
+        if (driverPool.get() != null) {
+            driverPool.get().quit();
+            driverPool.remove();
         }
     }
 }

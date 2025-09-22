@@ -5,7 +5,7 @@ Feature: product data table practice
   # practice List <List<String>>
   # Map<String, List<String>>
 
-  @listOfMap
+  @listOfMap @smoke
   Scenario: verify each product price
   # practice List<Map<String, String>>
     Given User is on the HomePage
@@ -39,7 +39,7 @@ Feature: product data table practice
 
 
 
-@listOfLists
+@listOfLists @smoke
   # practice List <List<String>>
 Scenario: verify each product price ListOfList
   Given User is on the HomePage
@@ -64,7 +64,7 @@ Scenario: verify each product price ListOfList
 
 
 
-  @mapList
+  @mapList @smoke
   # Map<String, List<String>>
   Scenario: verify student names
     Then user should be able to see the names
@@ -75,10 +75,10 @@ Scenario: verify each product price ListOfList
  # List Element 2(List<String>): [Groop3, vika suidum | savlat]
 
 
-  @mapListProduct
+  @mapListProduct @smoke
      # Map<String, List<String>>
   Scenario: verify each product price map
-    Given user is on Home page page
+    Given User is on the HomePage
     Then User should be able to see expected prices in the following products with map
 
       | Phones   | Samsung galaxy s6  - 360 | Nokia lumia 1520  - 820 | Nexus 6 - 650      |
