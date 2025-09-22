@@ -1,5 +1,6 @@
 package io.loop.step_definitions;
 
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -23,10 +24,10 @@ public class GoogleSearchStepDefs {
 
     GoogleSearchPage googleSearchPage = new GoogleSearchPage();
 
-    @Given("user is on Home page page")
-    public void user_is_on_home_page_page() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("google.url"));
-    }
+    @Given("user is on Google page")
+    public void userIsOnGooglePage() {
+        Driver.getDriver().get(ConfigurationReader.getProperties("google.url"));
+  }
 
 
     @When("user types Loop Academy in the google search box and clicks enter")
@@ -109,4 +110,5 @@ public void user_searches_the_following_items(List<Map<String, String>> items) {
         BrowserUtils.takeScreenshot();
     }
 }
-    }
+
+}

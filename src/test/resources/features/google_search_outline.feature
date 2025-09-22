@@ -1,7 +1,7 @@
 Feature: Scenario Outline Practice
 
 
-@google_search_outline
+@google_search_outline @smoke
   Scenario Outline:
     Given user is on Google page
     When user searches for "<country>"
