@@ -55,6 +55,12 @@ public class Driver {
                 }
                 case "firefox" -> driverPool.set(new FirefoxDriver());
                 case "safari" -> driverPool.set(new SafariDriver());
+                case "headless" -> {
+                    options.addArguments("--disable-blink-features=AutomationControlled");
+                    options.addArguments("--headless");
+                    driverPool.set(new ChromeDriver(options));
+
+                }
             }
             driverPool.get().manage().window().maximize();
             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
