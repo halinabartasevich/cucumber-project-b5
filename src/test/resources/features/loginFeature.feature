@@ -43,8 +43,8 @@ Feature: Docuport Login Feature
   @dataTableLogin @smoke
   Scenario: Login as a client map practice
     When user enters credentials
-      |username|b1g1_client@gmail.com|
-      |password|Group1              |
+      | username | b1g1_client@gmail.com |
+      | password | Group1                |
     Then user should be able to see the home page for client
 
 

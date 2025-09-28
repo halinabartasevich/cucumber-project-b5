@@ -8,11 +8,12 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"html:target/html-reports/cucumber-report.html",
                 "json:target/json-reports/json-report.json",
-                 "rerun:target/rerun.txt"},
+                 "rerun:target/rerun.txt",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         features = "src/test/resources/features",
         glue = "io/loop/step_definitions",
         dryRun = false,
-        tags = "@listOfLists",
+        tags = "@smoke",
         monochrome = true,
         publish = false
 )
