@@ -104,7 +104,7 @@ public void user_searches_the_following_items(List<Map<String, String>> items) {
         System.out.println("item.get(\"items\") = " + item.get("items"));
         googleSearchPage.searchBox.clear();
         googleSearchPage.searchBox.sendKeys(item.get("items") + Keys.ENTER);
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.LARGE));
         wait.until(ExpectedConditions.titleIs(item.get("items") + " - Google Search"));
         assertEquals("Expected does not match the actual", item.get("items") + " - Google Search", Driver.getDriver().getTitle());
         BrowserUtils.takeScreenshot();

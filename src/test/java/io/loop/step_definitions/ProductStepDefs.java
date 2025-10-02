@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.loop.pages.POM;
 import io.loop.utilities.ConfigurationReader;
+import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.apache.logging.log4j.*;
 import org.junit.Assert;
@@ -41,7 +42,7 @@ public class ProductStepDefs {
 
             // click the category
             pages.getProductPage().clickCategory(productDetail.get("Category"));
-            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(DocuportConstants.SMALL));
 
             // get actual price
             String actualPrice = pages.getProductPage().getProductPrice(productDetail.get("Product"));

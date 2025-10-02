@@ -33,11 +33,12 @@ public class Driver {
     public static WebDriver getDriver() {
         if (driverPool.get() == null) {
             String browserType = ConfigurationReader.getProperties("browser");
+            //String browserType = System.getenv("browser");
+
             ChromeOptions options = new ChromeOptions();
             switch (browserType.toLowerCase()) {
                 case "chrome" -> {
                     options.addArguments("--disable-blink-features=AutomationControlled");
-                   /*
                    options.addArguments("--disable-blink-features=AutomationControlled");
                     options.addArguments("--disable-password-manager-reauthentication");
                     options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding");
@@ -48,9 +49,6 @@ public class Driver {
                         put("autofill.profile_enabled", false);
                         put("autofill.credit_card_enabled", false);
                     }});
-                    */
-
-
                     driverPool.set(new ChromeDriver(options));
                 }
                 case "firefox" -> driverPool.set(new FirefoxDriver());
@@ -63,7 +61,8 @@ public class Driver {
                 }
             }
             driverPool.get().manage().window().maximize();
-            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            //driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.valueOf(ConfigurationReader.getProperties("timeouts"))));
+            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(DocuportConstants.LARGE));
         }
         return driverPool.get();
     }

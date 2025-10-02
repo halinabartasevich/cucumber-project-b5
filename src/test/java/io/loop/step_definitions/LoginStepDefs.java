@@ -10,6 +10,7 @@ import io.loop.utilities.ConfigurationReader;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 
+import java.time.Duration;
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
@@ -25,10 +26,11 @@ public class LoginStepDefs {
 
     }
 
-    @When("user enters username for clien")
-    public void user_enters_username_for_clien() {
-        //Brows //BrowserUtils.waitForClickable(loginPage.loginButton, 10); - it is no good
-        BrowserUtils.waitForClickable(loginPage.loginButton, DocuportConstants.LARGE);
+    @When("user enters username for client")
+    public void user_enters_username_for_client() {
+        //BrowserUtils.waitForClickable(loginPage.loginButton, 10); - it is no good
+     //  BrowserUtils.waitForClickable(loginPage.loginButton, Duration.ofSeconds(DocuportConstants.LARGE));
+
         assertTrue("Login buton is NOT displayed", loginPage.loginButton.isDisplayed());
         loginPage.userNameInput.sendKeys(DocuportConstants.USERNAME_CLIENT);
     }
@@ -46,7 +48,7 @@ public class LoginStepDefs {
     @Then("user should be able to see the home page for client")
     public void user_should_be_able_to_see_the_home_page_for_client() throws InterruptedException {
         Thread.sleep(3000);
-        homePage.continueButton.click();
+     //   homePage.continueButton.click();
         assertTrue("Home page is not loaded", homePage.logo.isDisplayed());
     }
 
