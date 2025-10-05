@@ -14,7 +14,8 @@ Feature: Docuport Sample Scenario
     And user clicks "Received Docs" button on "Left Navigate" page
     And user clicks "search" button on "Received Docs" page
     And user inserts "tax documents" to "Document name" field on "Received Docs" page
-
-  #  And user clicks "My uploads" button on "Left Navigate" page
- #  And user clicks "Upload Documents" button on "My uploads" page
-   # And user clicks "Upload file" button on "My uploads" page
+    And user clicks "My uploads" button on "Left Navigate" page
+    And user clicks "Upload Documents" button on "My uploads" page
+    # if sending to input from html works you do need below step
+     And user clicks "Upload file" button on "My uploads" page
+    And user uploads a document

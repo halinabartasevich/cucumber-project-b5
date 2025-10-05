@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LeftNavigatePage {
+
     public  LeftNavigatePage() {
         PageFactory.initElements(Driver.getDriver(),this);
     }
