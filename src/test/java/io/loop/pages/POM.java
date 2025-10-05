@@ -13,6 +13,9 @@ public class POM {
     private LeftNavigatePage leftNavigatePage;
     private MyUploadsPage myUploadsPage;
 
+
+
+
     public LoginPage getLoginPage() {
         if (loginPage == null) {
             loginPage = new LoginPage();
