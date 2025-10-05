@@ -24,7 +24,6 @@ public class LoginPage {
     @FindBy (xpath = "//input[@type='text']")
     public WebElement userNameInput;
 
-
     @FindBy (xpath = "//input[@type='password']")
     public WebElement passwordInput;
 
@@ -33,6 +32,17 @@ public class LoginPage {
 
     @FindBy (xpath = "//button[@type='submit']")
     public WebElement continueButton;
+
+    @FindBy(xpath = "//*[.=' Login ']" )
+    public WebElement loginText;
+
+    @FindBy(xpath = "//img[@src='/img/logo.d7557277.svg']" )
+    public WebElement docuportText;
+
+
+    @FindBy(xpath = "//h3[.='Choose account']" )
+    public WebElement chooseAccountText;
+
 
 
     public void insertField(String field, String input) {
@@ -50,9 +60,9 @@ public class LoginPage {
                 try {
                     BrowserUtils.waitForClickable(continueButton, DocuportConstants.LARGE).click();
                 } catch (StaleElementReferenceException e){
-                    Thread.sleep(3000);
+                  //  Thread.sleep(5000);
                     WebElement element = Driver.getDriver().findElement(By.xpath("//span[.=' Continue ']"));
-                    BrowserUtils.waitForClickable(element, DocuportConstants.LARGE).click();
+                    BrowserUtils.waitForClickable(element, DocuportConstants.EXTRA_LARGE).click();
                 }
             }
             default -> throw new IllegalArgumentException("Not such a button: " + button);
