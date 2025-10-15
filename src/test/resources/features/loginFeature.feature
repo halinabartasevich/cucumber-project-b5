@@ -1,7 +1,7 @@
 Feature: Docuport Login Feature
 
 
-  Background: this is for navigating Docupirt login page
+  Background: this is for navigating Docuprt login page
     Given user is on Docuport login page
 
   @smoke
